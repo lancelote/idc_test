@@ -102,7 +102,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'med_app/static')
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'med_app/templates'),

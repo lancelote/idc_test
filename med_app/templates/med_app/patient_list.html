@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-    <h1>Patient list:</h1>
+{% extends 'med_app/base.html' %}
+
+{% block content %}
     {% for patient in patients %}
-        <a href="">{{ patient }}</a>
-{% endfor %}
-</body>
-</html>
+        <a href="{% url 'med_app.views.patient_detail' pk=patient.pk %}">{{ patient }}</a>
+    {% endfor %}
+{% endblock content %}

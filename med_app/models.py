@@ -24,6 +24,11 @@ class Patient(models.Model):
         validators=[phone_regex], max_length=15
     )
 
+    def __str__(self):
+        return '{0}, '.format(self.id) + ' '.join(
+            (self.family_name, self.first_name, self.patronymic_name)
+        )
+
 
 class Document(models.Model):
     """
@@ -42,6 +47,9 @@ class Document(models.Model):
     number = models.IntegerField()
     date_of_issue = models.DateField()
 
+    def __str__(self):
+        return self.patient.__str__()
+
 
 class Address(models.Model):
     """
@@ -53,6 +61,9 @@ class Address(models.Model):
     house = models.IntegerField()
     apartment = models.IntegerField()
     postal_code = models.IntegerField()
+
+    def __str__(self):
+        return self.patient.__str__()
 
 
 class RegAddress(Address):

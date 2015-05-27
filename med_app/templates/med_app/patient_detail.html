@@ -1,0 +1,77 @@
+{% extends 'med_app/base.html' %}
+
+{% block content %}
+    <h1>Детальная информация о пациенте:</h1>
+    <div class="patient">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчетсво</th>
+                    <th>Дата рождения</th>
+                    <th>Пол</th>
+                    <th>Телефон</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ patient.family_name }}</td>
+                    <td>{{ patient.first_name }}</td>
+                    <td>{{ patient.patronymic_name }}</td>
+                    <td>{{ patient.date_of_birth }}</td>
+                    <td>{{ patient.sex }}</td>
+                    <td>{{ patient.phone_number }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Документ</th>
+                    <th>Серия</th>
+                    <th>Номер</th>
+                    <th>Дата выдачи</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ document.doc_name }}</td>
+                    <td>{{ document.serial }}</td>
+                    <td>{{ document.number }}</td>
+                    <td>{{ document.date_of_issue }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Город</th>
+                    <th>Улица</th>
+                    <th>Номер дома</th>
+                    <th>Квартира</th>
+                    <th>Почтовый индекс</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Адрес прописки</td>
+                    <td>{{ reg_address.city }}</td>
+                    <td>{{ reg_address.street }}</td>
+                    <td>{{ reg_address.house }}</td>
+                    <td>{{ reg_address.apartment }}</td>
+                    <td>{{ reg_address.postal_code }}</td>
+                </tr>
+                <tr>
+                    <td>Адрес фактический</td>
+                    <td>{{ act_address.city }}</td>
+                    <td>{{ act_address.street }}</td>
+                    <td>{{ act_address.house }}</td>
+                    <td>{{ act_address.apartment }}</td>
+                    <td>{{ act_address.postal_code }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

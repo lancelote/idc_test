@@ -1,6 +1,7 @@
 {% extends 'med_app/base.html' %}
 
 {% block content %}
+    <h1>Список пациентов:</h1>
     {% for patient in patients %}
         <a href="{% url 'med_app.views.patient_detail' pk=patient.pk %}">{{ patient }}</a>
     {% endfor %}

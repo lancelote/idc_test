@@ -106,5 +106,9 @@
             </table>
         </div>
     </div>
-    <a class="btn btn-default" href="{% url 'patient_edit' pk=patient.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    <div class="col-md-2 col-md-offset-5">
+        <div class="button">
+            <a class="btn btn-default" href="{% url 'patient_edit' pk=patient.pk %}">Исправить</a>
+        </div>
+    </div>
 {% endblock %}

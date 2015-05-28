@@ -21,7 +21,7 @@ class Patient(models.Model):
         message="Требуемый формат номера: '+999999999'"
     )
     phone_number = models.CharField(
-        validators=[phone_regex], max_length=15
+        validators=[phone_regex], max_length=15, default='+899999999'
     )
 
     def __str__(self):

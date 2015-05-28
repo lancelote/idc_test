@@ -1,0 +1,26 @@
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 2px 2px 2px 2px;
+    vertical-align: baseline;
+}
+
+th {
+    width: 150px;
+}
+
+.btn {
+    width: 325px;
+}
+
+.button {
+    padding-top: 10px;
+}
+
+.detail td {
+    border: 1px solid gray;
+    padding: 5px;
+    width: 200px;
+}

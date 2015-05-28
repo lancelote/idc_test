@@ -24,3 +24,9 @@ input {
     padding: 5px;
     width: 200px;
 }
+
+.page-header {
+    background-color: lightgrey;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}

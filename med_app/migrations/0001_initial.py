@@ -14,8 +14,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ActAddress',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
-                ('city', models.CharField(default='Тула', max_length=20)),
+                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('city', models.CharField(max_length=20, default='Тула')),
                 ('street', models.CharField(max_length=20)),
                 ('house', models.IntegerField()),
                 ('apartment', models.IntegerField()),
@@ -28,8 +28,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Document',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
-                ('doc_name', models.CharField(default='Паспорт', choices=[('Паспорт', 'Паспорт')], max_length=20)),
+                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('doc_name', models.CharField(choices=[('Паспорт', 'Паспорт')], max_length=20, default='Паспорт')),
                 ('serial', models.IntegerField()),
                 ('number', models.IntegerField()),
                 ('date_of_issue', models.DateField()),
@@ -38,20 +38,20 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Patient',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
                 ('family_name', models.CharField(max_length=100)),
                 ('first_name', models.CharField(max_length=100)),
                 ('patronymic_name', models.CharField(max_length=100)),
                 ('date_of_birth', models.DateField()),
                 ('sex', models.CharField(choices=[('М', 'мужской'), ('Ж', 'женский')], max_length=1)),
-                ('phone_number', models.CharField(validators=[django.core.validators.RegexValidator(regex='^\\+?1?\\d{9,15}$', message="Требуемый формат номера: '+999999999'")], max_length=15)),
+                ('phone_number', models.CharField(max_length=15, validators=[django.core.validators.RegexValidator(regex='^\\+?1?\\d{9,15}$', message="Требуемый формат номера: '+999999999'")])),
             ],
         ),
         migrations.CreateModel(
             name='RegAddress',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
-                ('city', models.CharField(default='Тула', max_length=20)),
+                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('city', models.CharField(max_length=20, default='Тула')),
                 ('street', models.CharField(max_length=20)),
                 ('house', models.IntegerField()),
                 ('apartment', models.IntegerField()),

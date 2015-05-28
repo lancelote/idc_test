@@ -15,6 +15,9 @@ class PatientForm(forms.ModelForm):
             'sex',
             'phone_number',
         )
+        widgets = {
+            'date_of_birth': forms.DateInput(attrs={'class': 'datepicker'}),
+        }
         labels = {
             'family_name': _('Фамилия'),
             'first_name': _('Имя'),
@@ -35,6 +38,9 @@ class DocumentForm(forms.ModelForm):
             'number',
             'date_of_issue',
         )
+        widgets = {
+            'date_of_issue': forms.DateInput(attrs={'class': 'datepicker'}),
+        }
         labels = {
             'doc_name': _('Документ'),
             'serial': _('Серия'),

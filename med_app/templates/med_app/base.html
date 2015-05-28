@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'jquery-ui-1.11.4/jquery-ui.css' %}" rel="stylesheet">
+    <script src="{% static 'jquery-ui-1.11.4/external/jquery/jquery.js' %}"></script>
+    <script src="{% static 'jquery-ui-1.11.4/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/datepicker-ru.js' %}"></script>
+    <script>
+    $(document).ready(function() {
+        $('.datepicker').datepicker({
+            dateFormat: "dd.mm.yy"
+        });
+    });
+    </script>
     <title></title>
 </head>
 <body>
@@ -17,7 +28,7 @@
         </div>
     </div>
 
-<script src="{% static 'js/jquery-2.1.4.js' %}"></script>
+
 <script src="{% static 'js/bootstrap.js' %}"></script>
 </body>
 </html>

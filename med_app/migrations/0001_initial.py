@@ -12,20 +12,23 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Address',
+            name='ActAddress',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('city', models.CharField(default='Тула', max_length=20)),
                 ('street', models.CharField(max_length=20)),
                 ('house', models.IntegerField()),
                 ('apartment', models.IntegerField()),
-                ('postal_code', models.IntegerField()),
+                ('postal_code', models.IntegerField(default=300000)),
             ],
+            options={
+                'abstract': False,
+            },
         ),
         migrations.CreateModel(
             name='Document',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('doc_name', models.CharField(default='Паспорт', choices=[('Паспорт', 'Паспорт')], max_length=20)),
                 ('serial', models.IntegerField()),
                 ('number', models.IntegerField()),
@@ -35,28 +38,29 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Patient',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('family_name', models.CharField(max_length=100)),
                 ('first_name', models.CharField(max_length=100)),
                 ('patronymic_name', models.CharField(max_length=100)),
                 ('date_of_birth', models.DateField()),
                 ('sex', models.CharField(choices=[('М', 'мужской'), ('Ж', 'женский')], max_length=1)),
-                ('phone_number', models.CharField(validators=[django.core.validators.RegexValidator(message="Требуемый формат номера: '+999999999'", regex='^\\+?1?\\d{9,15}$')], max_length=15)),
+                ('phone_number', models.CharField(validators=[django.core.validators.RegexValidator(regex='^\\+?1?\\d{9,15}$', message="Требуемый формат номера: '+999999999'")], max_length=15)),
             ],
-        ),
-        migrations.CreateModel(
-            name='ActAddress',
-            fields=[
-                ('address_ptr', models.OneToOneField(to='med_app.Address', primary_key=True, parent_link=True, serialize=False, auto_created=True)),
-            ],
-            bases=('med_app.address',),
         ),
         migrations.CreateModel(
             name='RegAddress',
             fields=[
-                ('address_ptr', models.OneToOneField(to='med_app.Address', primary_key=True, parent_link=True, serialize=False, auto_created=True)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('city', models.CharField(default='Тула', max_length=20)),
+                ('street', models.CharField(max_length=20)),
+                ('house', models.IntegerField()),
+                ('apartment', models.IntegerField()),
+                ('postal_code', models.IntegerField(default=300000)),
+                ('patient', models.ForeignKey(to='med_app.Patient')),
             ],
-            bases=('med_app.address',),
+            options={
+                'abstract': False,
+            },
         ),
         migrations.AddField(
             model_name='document',
@@ -64,7 +68,7 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(to='med_app.Patient'),
         ),
         migrations.AddField(
-            model_name='address',
+            model_name='actaddress',
             name='patient',
             field=models.ForeignKey(to='med_app.Patient'),
         ),

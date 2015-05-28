@@ -60,7 +60,10 @@ class Address(models.Model):
     street = models.CharField(max_length=20)
     house = models.IntegerField()
     apartment = models.IntegerField()
-    postal_code = models.IntegerField()
+    postal_code = models.IntegerField(default=300000)
+
+    class Meta:
+        abstract = True
 
     def __str__(self):
         return self.patient.__str__()

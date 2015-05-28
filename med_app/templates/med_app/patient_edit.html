@@ -1,34 +1,40 @@
 {% extends 'med_app/base.html' %}
 
 {% block content %}
-    <h1>Новый пациент</h1>
+    <h1>Пациент</h1>
     <form method="POST" class="patient-form">{% csrf_token %}
-        <div>
-            <h3>Данные о пациенте:</h3>
-            <table>
-                {{ patient_form.as_table }}
-            </table>
+        <div class="col-md-6">
+            <div>
+                <h3>Данные о пациенте:</h3>
+                <table>
+                    {{ patient_form.as_table }}
+                </table>
+            </div>
+            <div>
+                <h3>Документ, удостоверяющий личность:</h3>
+                <table>
+                    {{ document_form.as_table }}
+                </table>
+            </div>
         </div>
-        <div>
-            <h3>Документ, удостоверяющий личность:</h3>
-            <table>
-                {{ document_form.as_table }}
-            </table>
+        <div class="col-md-6">
+            <div>
+                <h3>Адрес прописки:</h3>
+                <table>
+                    {{ reg_address_form.as_table }}
+                </table>
+            </div>
+            <div>
+                <h3>Фактический адрес:</h3>
+                <table>
+                    {{ act_address_form.as_table }}
+                </table>
+            </div>
         </div>
-        <div>
-            <h3>Адрес прописки:</h3>
-            <table>
-                {{ reg_address_form.as_table }}
-            </table>
-        </div>
-        <div>
-            <h3>Фактический адрес:</h3>
-            <table>
-                {{ act_address_form.as_table }}
-            </table>
-        </div>
-        <div class="button">
-            <button type="submit" class="save btn btn-success">Сохранить</button>
+        <div class="col-md-2 col-md-offset-5">
+            <div class="button">
+                <button type="submit" class="save btn btn-success">Сохранить</button>
+            </div>
         </div>
     </form>
 {% endblock %}

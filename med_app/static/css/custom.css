@@ -3,12 +3,16 @@ table {
 }
 
 td, th {
-    padding: 2px 2px 2px 2px;
+    padding: 2px;
     vertical-align: baseline;
 }
 
 th {
     width: 150px;
+}
+
+input {
+    padding: 2px;
 }
 
 .button {

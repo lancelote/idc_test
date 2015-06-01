@@ -19,6 +19,10 @@ input {
     padding-top: 10px;
 }
 
+.buttons {
+    text-align: center;
+}
+
 .detail td {
     border: 1px solid gray;
     padding: 5px;

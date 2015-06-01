@@ -107,3 +107,9 @@ def patient_edit(request, pk):
                    'document_form': document_form,
                    'reg_address_form': reg_address_form,
                    'act_address_form': act_address_form})
+
+
+def patient_remove(request, pk):
+    patient = get_object_or_404(Patient, pk=pk)
+    patient.delete()
+    return redirect('med_app.views.patient_list')

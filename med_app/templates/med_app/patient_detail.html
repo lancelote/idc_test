@@ -106,9 +106,14 @@
             </table>
         </div>
     </div>
-    <div class="col-md-2 col-md-offset-5">
-        <div class="button">
-            <a class="btn btn-default" href="{% url 'patient_edit' pk=patient.pk %}">Исправить</a>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-5 buttons">
+            <div class="button">
+                <a class="btn btn-default" href="{% url 'patient_edit' pk=patient.pk %}">Исправить</a>
+            </div>
+            <div class="button">
+                <a class="btn btn-danger" href="{% url 'patient_remove' pk=patient.pk %}">Удалить</a>
+            </div>
         </div>
     </div>
 {% endblock %}

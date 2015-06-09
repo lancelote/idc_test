@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+
 from .models import Patient, Document, RegAddress, ActAddress
 from .forms import PatientForm, DocumentForm, RegAddressForm, ActAddressForm
 
@@ -20,6 +22,7 @@ def patient_detail(request, pk):
                    'act_address': act_address})
 
 
+@login_required
 def patient_new(request):
     if request.method == "POST":
         patient_form = PatientForm(request.POST)
@@ -61,6 +64,7 @@ def patient_new(request):
                    'act_address_form': act_address_form})
 
 
+@login_required
 def patient_edit(request, pk):
     patient = get_object_or_404(Patient, pk=pk)
     document = Document.objects.get(patient_id=patient.id)
@@ -109,6 +113,7 @@ def patient_edit(request, pk):
                    'act_address_form': act_address_form})
 
 
+@login_required
 def patient_remove(request, pk):
     patient = get_object_or_404(Patient, pk=pk)
     patient.delete()

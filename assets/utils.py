@@ -16,5 +16,5 @@ def generate_local_settings(file):
     )
 
     with open(file, 'w+') as local_settings:
-        local_settings.write('"""\n Production settings\n """\n')
+        local_settings.write('"""\n Production settings\n"""\n\n')
         local_settings.write('\n'.join(settings) + '\n')

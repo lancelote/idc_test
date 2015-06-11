@@ -10,7 +10,7 @@ urlpatterns = [
     ),
     url(
         r'^patient/(?P<pk>[0-9]+)/$',
-        views.patient_detail,
+        views.PatientDetailView.as_view(),
         name='patient_detail'
     ),
     url(

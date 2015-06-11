@@ -37,19 +37,19 @@
             <table class="detail">
                 <tr>
                     <th>Документ:</th>
-                    <td>{{ document.doc_name }}</td>
+                    <td>{{ patient.document_set.get.doc_name }}</td>
                 </tr>
                 <tr>
                     <th>Серия:</th>
-                    <td>{{ document.serial }}</td>
+                    <td>{{ patient.document_set.get.serial }}</td>
                 </tr>
                 <tr>
                     <th>Номер:</th>
-                    <td>{{ document.number }}</td>
+                    <td>{{ patient.document_set.get.number }}</td>
                 </tr>
                 <tr>
                     <th>Дата выдачи:</th>
-                    <td>{{ document.date_of_issue }}</td>
+                    <td>{{ patient.document_set.get.date_of_issue }}</td>
                 </tr>
             </table>
         </div>
@@ -60,23 +60,23 @@
             <table class="detail">
                 <tr>
                     <th>Город:</th>
-                    <td>{{ reg_address.city }}</td>
+                    <td>{{ patient.regaddress_set.get.city }}</td>
                 </tr>
                 <tr>
                     <th>Улица:</th>
-                    <td>{{ reg_address.street }}</td>
+                    <td>{{ patient.regaddress_set.get.street }}</td>
                 </tr>
                 <tr>
                     <th>Дом:</th>
-                    <td>{{ reg_address.house }}</td>
+                    <td>{{ patient.regaddress_set.get.house }}</td>
                 </tr>
                 <tr>
                     <th>Квартира:</th>
-                    <td>{{ reg_address.apartment }}</td>
+                    <td>{{ patient.regaddress_set.get.apartment }}</td>
                 </tr>
                 <tr>
                     <th>Почтовый индекс:</th>
-                    <td>{{ reg_address.postal_code }}</td>
+                    <td>{{ patient.regaddress_set.get.postal_code }}</td>
                 </tr>
             </table>
         </div>
@@ -85,23 +85,23 @@
             <table class="detail">
                 <tr>
                     <th>Город:</th>
-                    <td>{{ act_address.city }}</td>
+                    <td>{{ patient.actaddress_set.get.city }}</td>
                 </tr>
                 <tr>
                     <th>Улица:</th>
-                    <td>{{ act_address.street }}</td>
+                    <td>{{ patient.actaddress_set.get.street }}</td>
                 </tr>
                 <tr>
                     <th>Дом:</th>
-                    <td>{{ act_address.house }}</td>
+                    <td>{{ patient.actaddress_set.get.house }}</td>
                 </tr>
                 <tr>
                     <th>Квартира:</th>
-                    <td>{{ act_address.apartment }}</td>
+                    <td>{{ patient.actaddress_set.get.apartment }}</td>
                 </tr>
                 <tr>
                     <th>Почтовый индекс:</th>
-                    <td>{{ act_address.postal_code }}</td>
+                    <td>{{ patient.actaddress_set.get.postal_code }}</td>
                 </tr>
             </table>
         </div>
@@ -109,10 +109,10 @@
     <div class="row">
         <div class="col-md-2 col-md-offset-5 buttons">
             <div class="button">
-                <a class="btn btn-default" href="{% url 'med_app:patient_edit' pk=patient.pk %}">Исправить</a>
+                <a class="btn btn-default" href="{% url 'med_app:patient_edit' patient.pk %}">Исправить</a>
             </div>
             <div class="button">
-                <a class="btn btn-danger" href="{% url 'med_app:patient_remove' pk=patient.pk %}">Удалить</a>
+                <a class="btn btn-danger" href="{% url 'med_app:patient_remove' patient.pk %}">Удалить</a>
             </div>
         </div>
     </div>

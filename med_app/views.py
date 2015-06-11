@@ -14,16 +14,8 @@ class PatientListView(generic.ListView):
         return Patient.objects.order_by('id')
 
 
-def patient_detail(request, pk):
-    patient = get_object_or_404(Patient, pk=pk)
-    document = Document.objects.get(patient_id=patient.id)
-    reg_address = RegAddress.objects.get(patient_id=patient.id)
-    act_address = ActAddress.objects.get(patient_id=patient.id)
-    return render(request, 'med_app/patient_detail.html',
-                  {'patient': patient,
-                   'document': document,
-                   'reg_address': reg_address,
-                   'act_address': act_address})
+class PatientDetailView(generic.DetailView):
+    model = Patient
 
 
 @login_required
@@ -55,7 +47,7 @@ def patient_new(request):
             act_address.patient = patient
             act_address.save()
 
-            return redirect('med_app.views.patient_detail', pk=patient.pk)
+            return redirect('med_app:patient_detail', pk=patient.pk)
     else:
         patient_form = PatientForm()
         document_form = DocumentForm()

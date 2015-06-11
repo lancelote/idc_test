@@ -17,6 +17,18 @@ class PatientListView(generic.ListView):
 class PatientDetailView(generic.DetailView):
     model = Patient
 
+    def get_context_data(self, **kwargs):
+        """
+        Add document, reg_address and act_address to context
+        """
+        context = super(PatientDetailView, self).get_context_data(**kwargs)
+
+        patient_id = self.kwargs['pk']
+        context['document'] = Document.objects.get(patient_id=patient_id)
+        context['reg_address'] = RegAddress.objects.get(patient_id=patient_id)
+        context['act_address'] = ActAddress.objects.get(patient_id=patient_id)
+        return context
+
 
 @login_required
 def patient_new(request):

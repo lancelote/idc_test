@@ -2,12 +2,12 @@
 
 {% block content %}
     <h1>Список пациентов:</h1>
-    {% for patient in patients %}
+    {% for patient in patient_list %}
         <div>
-            <a href="{% url 'med_app.views.patient_detail' pk=patient.pk %}">{{ patient }}</a>
+            <a href="{% url 'med_app:patient_detail' patient.pk %}">{{ patient }}</a>
         </div>
     {% endfor %}
     <div class="col-md-12">
-        <a href="{% url 'med_app.views.patient_new' %}">Добавить нового...</a>
+        <a href="{% url 'med_app:patient_new' %}">Добавить нового...</a>
     </div>
 {% endblock content %}

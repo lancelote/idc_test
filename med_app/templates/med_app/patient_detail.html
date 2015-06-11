@@ -109,10 +109,10 @@
     <div class="row">
         <div class="col-md-2 col-md-offset-5 buttons">
             <div class="button">
-                <a class="btn btn-default" href="{% url 'patient_edit' pk=patient.pk %}">Исправить</a>
+                <a class="btn btn-default" href="{% url 'med_app:patient_edit' pk=patient.pk %}">Исправить</a>
             </div>
             <div class="button">
-                <a class="btn btn-danger" href="{% url 'patient_remove' pk=patient.pk %}">Удалить</a>
+                <a class="btn btn-danger" href="{% url 'med_app:patient_remove' pk=patient.pk %}">Удалить</a>
             </div>
         </div>
     </div>

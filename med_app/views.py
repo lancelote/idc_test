@@ -1,13 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.views import generic
 
 from .models import Patient, Document, RegAddress, ActAddress
 from .forms import PatientForm, DocumentForm, RegAddressForm, ActAddressForm
 
 
-def patient_list(request):
-    patients = Patient.objects.order_by('id')
-    return render(request, 'med_app/patient_list.html', {'patients': patients})
+class PatientListView(generic.ListView):
+    def get_queryset(self):
+        """
+        Return list of all patients ordered by id
+        """
+        return Patient.objects.order_by('id')
 
 
 def patient_detail(request, pk):
@@ -100,7 +104,7 @@ def patient_edit(request, pk):
             act_address.patient = patient
             act_address.save()
 
-            return redirect('med_app.views.patient_detail', pk=patient.pk)
+            return redirect('med_app:patient_detail', pk=patient.pk)
     else:
         patient_form = PatientForm(instance=patient)
         document_form = DocumentForm(instance=document)
@@ -117,4 +121,4 @@ def patient_edit(request, pk):
 def patient_remove(request, pk):
     patient = get_object_or_404(Patient, pk=pk)
     patient.delete()
-    return redirect('med_app.views.patient_list')
+    return redirect('med_app:patient_list')

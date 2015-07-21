@@ -6,3 +6,4 @@ Project hosted by pythonanywhere: [idctest.pythonanywhere.com](http://idctest.py
 
 - [ ] `full_clean` for fields validation
 - [ ] Unit and functional tests
+- [ ] `get_absolute_path` method for models
